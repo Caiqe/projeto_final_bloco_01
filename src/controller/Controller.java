@@ -24,8 +24,12 @@ public class Controller implements ProdutoRepository {
 
 	@Override
 	public void mostrarCatalogo() {
-		for (Produto produto : produtos) {
-			produto.mostrarProduto();
+		if (produtos.isEmpty()) {
+			System.out.println("Ops! Ainda não temos produtos no catálogo. Que tal cadastrar alguns?");
+		} else {
+			for (Produto produto : produtos) {
+				produto.mostrarProduto();
+			}
 		}
 
 	}
@@ -40,7 +44,7 @@ public class Controller implements ProdutoRepository {
 	@Override
 	public void atualizarProduto(Produto produto) {
 		int codigo = produto.getCodigo();
-		
+
 		int index = produtos.indexOf(buscarNaCollection(codigo));
 
 		produtos.set(index, produto);

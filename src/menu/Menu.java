@@ -6,6 +6,7 @@ import java.util.Scanner;
 import controller.Controller;
 import model.Livro;
 import model.Roupa;
+import util.Cores;
 
 public class Menu {
 
@@ -18,21 +19,25 @@ public class Menu {
 
 		do {
 			try {
-				System.out.println(" +--------------------------------------------+");
-				System.out.println(" |                                            |");
-				System.out.println(" |                 TendTudo                   |");
-				System.out.println(" |                                            |");
-				System.out.println(" +--------------------------------------------+");
-				System.out.println(" |                                            |");
-				System.out.println(" |        [1]  -  Listar todo Catálogo        |");
-				System.out.println(" |        [2]  -  Adicionar Produto           |");
-				System.out.println(" |        [3]  -  Atualizar Produto           |");
-				System.out.println(" |        [4]  -  Buscar produto              |");
-				System.out.println(" |        [5]  -  Remover Produto             |");
-				System.out.println(" |                                            |");
-				System.out.println(" |        [0]  -  Encerrar Programa           |");
-				System.out.println(" |                                            |");
-				System.out.println(" +--------------------------------------------+");
+				System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_RED_BOLD_BRIGHT
+						+ "                                                ");
+				System.out.println(" +--------------------------------------------+ ");
+				System.out.println(" |                                            | ");
+				System.out.println(" |                 TendTudo                   | ");
+				System.out.println(" |                                            | ");
+				System.out.println(" +--------------------------------------------+ " + Cores.TEXT_RESET);
+				System.out.println(Cores.TEXT_WHITE_BOLD_BRIGHT + Cores.ANSI_BLACK_BACKGROUND
+						+ " |                                            | ");
+				System.out.println(" |        [1]  -  Listar todo Catálogo        | ");
+				System.out.println(" |        [2]  -  Adicionar Produto           | ");
+				System.out.println(" |        [3]  -  Atualizar Produto           | ");
+				System.out.println(" |        [4]  -  Buscar produto              | ");
+				System.out.println(" |        [5]  -  Remover Produto             | ");
+				System.out.println(" |                                            | ");
+				System.out.println(" |        [0]  -  Encerrar Programa           | ");
+				System.out.println(" |                                            | ");
+				System.out.println(" +--------------------------------------------+ ");
+				System.out.println("                                                ");
 				opcao = sc.nextInt();
 
 				switch (opcao) {
@@ -81,16 +86,17 @@ public class Menu {
 						System.out.println("Informe o valor (R$) da roupa: ");
 						float valor = sc.nextFloat();
 						sc.nextLine();
-						System.out.println("Informe o tamanho da roupa");
+						System.out.println("Informe o tamanho da roupa: (Ex: P,M,G)");
 						String tamanho = sc.nextLine();
-						sc.nextLine();
 						System.out.println("Informe a cor da roupa: ");
 						String cor = sc.nextLine();
 
-						controller.adicionarProduto(new Roupa(codigo, nome, valor, tamanho.charAt(0), cor));
+						controller
+								.adicionarProduto(new Roupa(codigo, nome, valor, tamanho.toUpperCase().charAt(0), cor));
 					}
 					default -> {
-						System.out.println("\n\nOpção inválida!");
+						System.out.println(Cores.TEXT_YELLOW_BOLD_BRIGHT + Cores.ANSI_BLACK_BACKGROUND
+								+ "Opção inválida!" + Cores.TEXT_RESET);
 					}
 					}
 
@@ -138,15 +144,21 @@ public class Menu {
 							System.out.println("Informe o novo valor (R$) da roupa: ");
 							float valor = sc.nextFloat();
 							sc.nextLine();
-							System.out.println("Informe o novo tamanho da roupa: ");
+							System.out.println("Informe o novo tamanho da roupa: (Ex: P,M,G)");
 							String tamanho = sc.nextLine();
+
 							System.out.println("Informe a nova cor da roupa");
 							String cor = sc.nextLine();
 
-							controller.atualizarProduto(new Roupa(codigo, nome, valor, tamanho.charAt(0), cor));
+							controller.atualizarProduto(
+									new Roupa(codigo, nome, valor, tamanho.toUpperCase().charAt(0), cor));
 						} else {
 							System.out.println("\nO Produto com código " + codigo + " não foi encontrado!\n");
 						}
+					}
+					default -> {
+						System.out.println(Cores.TEXT_YELLOW_BOLD_BRIGHT + Cores.ANSI_BLACK_BACKGROUND
+								+ "Opção inválida!" + Cores.TEXT_RESET);
 					}
 					}
 				}
@@ -170,11 +182,13 @@ public class Menu {
 
 				}
 				default -> {
-					System.out.println("Opção Inválida! Digite alguma das seguintes opções: \n\n");
+					System.out.println(Cores.TEXT_YELLOW_BOLD_BRIGHT + Cores.ANSI_BLACK_BACKGROUND
+							+ "Opção Inválida! Digite alguma das seguintes opções: \n\n" + Cores.TEXT_RESET);
 				}
 				}
 			} catch (InputMismatchException e) {
-				System.out.println("Opção inválida!");
+				System.out.println(Cores.TEXT_YELLOW_BOLD_BRIGHT + Cores.ANSI_BLACK_BACKGROUND + "Opção inválida!"
+						+ Cores.TEXT_RESET);
 				sc.nextLine();
 			}
 
@@ -184,10 +198,12 @@ public class Menu {
 	}
 
 	public static void sobre() {
-		System.out.println("\n\nTendTudo - O lugar onde você encontra tudo que precisa!\n\n");
-		System.out.println("Projeto desenvolvido por: Caique Gomes                         ");
-		System.out.println("Contato: cttcaiquegomes@gmail.com                              ");
-		System.out.println("GitHub: https://github.com/Caiqe                               ");
+		System.out.println("\n\n" + Cores.TEXT_RED_BOLD_BRIGHT + Cores.ANSI_BLACK_BACKGROUND + " TendTudo"
+				+ Cores.TEXT_WHITE_BOLD_BRIGHT + Cores.ANSI_BLACK_BACKGROUND
+				+ " - O lugar onde você encontra tudo que precisa!\n\n");
+		System.out.println(" Projeto desenvolvido por: Caique Gomes                         ");
+		System.out.println(" Contato: cttcaiquegomes@gmail.com                              ");
+		System.out.println(" GitHub: https://github.com/Caiqe                               ");
 	}
 
 }
