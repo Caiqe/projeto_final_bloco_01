@@ -32,6 +32,7 @@ public class Roupa extends Produto {
 		super.mostrarProduto();
 		System.out.println("Tamanho: " + this.tamanho);
 		System.out.println("Cor: " + this.cor);
+		System.out.println();
 	}
 
 }

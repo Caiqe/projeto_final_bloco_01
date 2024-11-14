@@ -32,7 +32,7 @@ public abstract class Produto {
 		System.out.println("Informações do Produto:\n");
 		System.out.println("Código: "+this.codigo);
 		System.out.println("Nome: "+this.nome);
-		System.out.println("Preço: "+this.preco);
+		System.out.println("Preço: R$"+this.preco);
 	}
 
 }

@@ -31,7 +31,8 @@ public class Livro extends Produto {
 	public void mostrarProduto() {
 		super.mostrarProduto();
 		System.out.println("Gênero Textual: " + this.genero);
-		System.out.println("Número de págians:" + this.numeroDePaginas);
+		System.out.println("Número de páginas: " + this.numeroDePaginas+"p");
+		System.out.println();
 	}
 
 }
